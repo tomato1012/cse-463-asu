@@ -1,0 +1,220 @@
+
+.header{
+   width: 70%;
+   left: 25%
+   clear: both;
+   float: left;
+   position: relative;
+   border-bottom: #000 1px solid;
+}
+.colmask{
+   width: 80%;
+   left: 10%
+}
+.colmid{ right: 25% }
+.colin{ right: 25% }
+.colleft{ right: 25% }
+.box_1{
+   width: 23%;
+   left: 77%
+}
+.box_2{
+   width: 23%;
+   left: 79%
+}
+.box_3{
+   width: 23%;
+   left: 80%
+}
+.box_4{
+   width: 23%;
+   left: 82%
+}
+.footer{
+   width: 50%;
+   left: 25%
+}
+
+.colmask{
+   clear: both;
+   float: left;
+   overflow: hidden;
+   position: relative;
+}
+.colmid{
+   float: left;
+   width: 100%;
+   position: relative;
+}
+.colin{
+   float: left;
+   width: 100%;
+   position: relative;
+}
+.colleft{
+   float: left;
+   width: 100%;
+   position: relative;
+}
+.box_1{
+   padding: 0px 0px 1em 0px;
+   overflow: hidden;
+   float: left;
+   position: relative;
+}
+.box_2{
+   padding: 0px 0px 1em 0px;
+   overflow: hidden;
+   float: left;
+   position: relative;
+}
+.box_3{
+   padding: 0px 0px 1em 0px;
+   overflow: hidden;
+   float: left;
+   position: relative;
+}
+.box_4{
+   padding: 0px 0px 1em 0px;
+   overflow: hidden;
+   float: left;
+   position: relative;
+}
+.footer{
+   clear: both;
+   float: left;
+   position: relative;
+   border-bottom: #000 1px solid;
+}
+.bottom{
+   clear: both;
+   width: 100%;
+   float: left;
+   position: relative;
+}
+
+ul {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 1em;
+  text-indent: 1em;
+}
+
+ul .states { 
+  background-color: #F4F4F4;
+}
+a { 
+  font-family: sans-serif;
+}   
+
+#moo ul li:before {
+  content: "\00BB \0020";
+  }
+
+#logo  { 
+  font-size: 700%;
+  color: #551A8B;
+  text-align: center;
+  font-weight: 500;
+  font-family: serif;
+  font-stretch: expanded;
+  padding: 1px 0px 10px 2px;
+  width: 100%;
+} 
+
+#suggest_form  { 
+  position: relative;
+  float: right;
+} 
+
+
+form#suggest {
+  position:relative;
+}
+
+div#new_city_label {
+  position:absolute;
+  float:right;
+  margin-right:3px;
+}
+
+input#newarea-field {
+  width:10em;
+
+}
+
+label.overlabel {
+  position:absolute;
+  top:3px;
+  left:5px;
+  z-index:1;
+  color:#999;
+}
+
+A:link {text-decoration: none}
+A:visited {text-decoration: none}
+A:active {text-decoration: none}
+A:hover {text-decoration: underline; color: red;}
+
+h1 { 
+  border-bottom: 1px solid #eaeaea;
+  font-family: serif;
+  font-size: 31px;
+  font-weight: 500;
+
+} 
+
+div.state_delimiter { 
+  -webkit-box-shadow: 0 -1px 0 #ddd;
+  -moz-box-shadow: 0 -1px 0 #ddd;
+  text-align: left;
+  box-shadow: 0 -1px 0 #ddd;
+  border-top: 1px solid #fff;
+  padding: 1px 0;
+
+} 
+
+body {
+   border-width: 0px;
+   padding: 0px;
+   margin: 0px;
+   font-size: 80%;
+   width: 100%;
+   min-width: 600px;
+   white-space: nowrap;
+}
+
+
+div.jump_to_continents { 
+  margin: 10px auto;
+  clear: both;
+  display: block;
+  list-style-type: none;
+  padding: 10px 0;
+  text-align: center;
+} 
+
+
+div.jump_to_continents a {
+  margin: 0 15px 0 0;
+  font-size: 14px;
+}
+
+
+div.footer {
+  margin: 20px auto;
+  clear: both;
+  display: block;
+  list-style-type: none;
+  padding: 20px 0;
+  text-align: center;
+}
+
+div.footer  a, div.footer span {
+  margin: 0 20px 0 0;
+  font-size: 11px;
+}
+
+/* some comment */
+
+
