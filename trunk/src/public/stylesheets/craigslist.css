@@ -776,3 +776,12 @@ input.err, textarea.err { border: red   2px solid; color: black; }
 /* post management */
 .managestatus { font-family: sans-serif; padding: 12px 20px; margin: 10px 20% 10px 10px; }
 .managebutton { padding: 12px 4px 4px; float: left; }
+
+/* Redesign CSS */
+.row { padding: 7px 0px 7px; margin-top: 0px; margin-bottom: 0px; font-family: arial,sans-serif; font-size: .8em; font-weight: bold; color: #193C6F;}
+.row a:link {color: #193C6F; text-decoration: none;}
+.row a:visited {color: #2F6FCF;}
+.row:hover {background: #D3E2F0; cursor: pointer;}
+.row-even {background: rgb(239, 244, 247);}
+.price {color: #569B1A;}
+.gc {background: #666;}
