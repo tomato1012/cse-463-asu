@@ -17,8 +17,8 @@ app.configure(function(){
   app.register('.html', require('ejs'));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
-  app.use(app.router);
   app.use(express.static(__dirname + '/public'));
+  app.use(app.router);
 });
 
 app.configure('development', function(){
@@ -36,6 +36,7 @@ app.get('/home', routes.home);
 app.get('/search', routes.search);
 app.get('/product', routes.product);
 app.get('/location', routes.location);
+app.get('/*', routes.deadpage);
 
 app.listen(3000);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);

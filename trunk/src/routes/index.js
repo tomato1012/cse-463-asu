@@ -18,3 +18,7 @@ exports.product = function(req, res){
 exports.location = function(req, res){
   res.render('location.html', { title: 'Craigslist Locations' })
 };
+
+exports.deadpage = function(req, res){
+	res.render('deadpage.html', {title: '404 - Page Not Found'})
+};
