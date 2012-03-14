@@ -1,7 +1,42 @@
 
+var url = require("url");
+
 // GET Home Page
 exports.home = function(req, res){
-  res.render('home.html', { title: 'Craigslist Home' })
+
+	var getLocation = url.parse(req.url, true).query["location"];
+	//if you recieved a location varaible in the string then we need to set the locaiton cookie to this value and go to the home page
+	if(getLocation != null)	
+	{
+		res.setHeader('Set-Cookie', ['location='+getLocation]);
+		res.render("home.html", { title: 'Craigslist Home', "location": getLocation})
+	}
+	//else search to see if the locaiton cookie is included
+
+	var cookies = {};
+	req.headers.cookie && req.headers.cookie.split(';').forEach(function( cookie )
+	{
+	  var parts = cookie.split('=');
+	  cookies[ parts[ 0 ].trim() ] = ( parts[ 1 ] || '' ).trim();
+	});
+
+	var locationCookie;
+	var hasLocation = false;
+	for(cookie in cookies)
+	{
+		if(cookie == "location")
+		{
+			locationCookie = cookie;
+			hasLocation = true;
+		}
+	}		
+	console.log("Cookies: %j", cookies);
+	
+	//if the location cookie exists, then go to the home page, else go to the locaitons page
+	if(hasLocation)
+		res.render("home.html", { title: 'Craigslist Home', location: locationCookie})
+	else
+		res.render('location.html', { title: 'Craigslist Locations' })
 };
 
 // GET Search Page
