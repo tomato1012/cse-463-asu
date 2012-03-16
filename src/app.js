@@ -35,6 +35,8 @@ app.get('/', routes.home);
 app.get('/home', routes.home);
 app.get('/search', routes.search);
 app.get('/product', routes.product);
+app.get('/sendmessage', routes.product);
+app.post('/sendmessage', routes.sendmessage);
 app.get('/location', routes.location);
 app.get('/*', routes.deadpage);
 

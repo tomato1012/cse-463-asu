@@ -1,5 +1,7 @@
 
 var url = require("url");
+var mailer = require("mailer");
+
 
 // GET Home Page
 exports.home = function(req, res){
@@ -46,8 +48,33 @@ exports.search = function(req, res){
 
 // GET Product Page
 exports.product = function(req, res){
-  res.render('product.html', { title: 'Craigslist Product' })
+  res.render('product.html', { title: 'Craigslist Product', message:"" })
 };
+
+// POST send message to product owner
+exports.sendmessage = function(req, res){
+	/*var body = req.body;
+	var ToEmail = body.ToEmail;
+	var Email = body.Email;
+	var subject = body.Subject;
+	var message = "Message from:"+body.Name + "\nMessage:\n"+body.Message;
+	
+	console.log(body.Copy);
+	
+	mailer.send
+	({
+		host: "localhost",
+		port: "25",
+		ssl: false,
+		domain: "localhost",
+		to: "rssanders3@gmail.com",
+		from: "rssanders3@gmail.com",
+		subject: "subject",
+		body: "message"
+	},function(err, result){});*/
+	
+	res.render('product.html', { title: 'Craigslist Product', message: 'Your email has been sent!!!' })
+}
 
 // GET Location Page
 exports.location = function(req, res){
