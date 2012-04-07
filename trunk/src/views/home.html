@@ -21,9 +21,11 @@
                 hideAllCategories();
                 showCategory(getCookie("category"));
         
-                $(".bannerlink").click(function()
+                $(".ban").click(function()
                 {
-                    var Id = $(this).attr('id');
+                    var Id = $(this).find('.bannerlink').attr('id');
+                    if(Id == null)
+                        return;
                     var category = Id.split("-")[0];
                     var categoryHidden = ($("#"+category+".col div.cats").css('display') == "none");
             
@@ -78,25 +80,6 @@
                             </li><li><a href="https://accounts.craigslist.org/">my account</a>
                             </li></ul>
 
-                        <form id="search" action="/search" method="GET">
-                            <div>search craigslist</div>
-                            <input type="hidden" name="areaID" value="18">
-                            <input type="hidden" name="subAreaID" value="">
-                            <input id="query" name="query"><br>
-                            <select name="catAbb">
-                                <option value="ccc">community
-                                </option><option value="eee">events
-                                </option><option value="ggg">gigs
-                                </option><option value="hhh">housing
-                                </option><option value="jjj">jobs
-                                </option><option value="ppp">personals
-                                </option><option value="res">resumes
-                                </option><option value="sss" selected="selected">for sale
-                                </option><option value="bbb">services
-                                </option></select>
-                            <input id="go" type="submit" value="&gt;">
-                        </form>
-
 
                         <div class="ban" id="calttl"><a href="/search/cal/">event calendar</a></div>
                         <table class="cal" summary="calendar">
@@ -142,29 +125,14 @@
                             </tbody></table>
 
 
-                        <ul id="leftlinks">
-
-
-
-                            <li><a href="/home?location=phoenixabout/help/">help, faq, abuse, legal</a>
-                            </li><li><a href="/home?location=phoenixabout/scams">avoid scams &amp; fraud</a>
-                            </li><li><a href="/home?location=phoenixabout/safety">personal safety tips</a>
-                            </li><li><a href="/home?location=phoenixabout/terms.of.use">terms of use <font color="orange">new</font></a>
-                            </li><li><a href="/home?location=phoenixabout/help/system-status.html">system status</a></li>
-                            <br/>
-                            <li><a href="/home?location=phoenixabout/">about craigslist</a>
-                            </li><li><a href="/home?location=phoenix">craigslist blog</a>
-                            </li><li><a href="/home?location=phoenixabout/best/all/">best-of-craigslist</a>
-                            </li><li><a href="http://www.craigslist-tv.com/">craigslist TV</a>
-                            </li><li><a href="http://craigconnects.org/">craig connects</a>
-
-
-
-                            </li></ul>
-
                         <br><br><br><br><br>
                         <br><br><br><br><br>
-                        � 2012 craigslist
+                        <br><br><br><br><br>
+                        <br><br><br><br><br>
+                        <br><br><br><br><br>
+                        <br><br><br><br><br>
+                        <br>
+                        2012 craigslist
 
                         <br>
 
@@ -173,10 +141,33 @@
                     <td>
 
                         <div id="topban" class="ban">
-                            <h2>phoenix</h2>&nbsp;<sup><a href="http://en.wikipedia.org/wiki/Phoenix%2C%20AZ">w</a></sup>
-                            <span class="sublinks"><a href="/search/cph/" title="central/south phx">cph</a><a href="/search/evl/" title="east valley">evl</a><a href="/search/nph/" title="phx north">nph</a><a href="/search/wvl/" title="west valley">wvl</a></span>
+                            <table style="width:100%;">
+                                <tr>
+                                    <td>
+                                        <h2>phoenix</h2>&nbsp;<sup><a href="http://en.wikipedia.org/wiki/Phoenix%2C%20AZ">w</a></sup>
+                                        <span class="sublinks"><a href="/search/cph/" title="central/south phx">cph</a><a href="/search/evl/" title="east valley">evl</a><a href="/search/nph/" title="phx north">nph</a><a href="/search/wvl/" title="west valley">wvl</a></span>
+                                    </td>
+                                    <td>
+                                        <form id="search" action="/search" method="GET">
+                                            <input id="query" placeholder="Search Craigslist" name="query"/><br>
+                                            <select name="catAbb">
+                                                <option value="ccc">community
+                                                </option><option value="eee">events
+                                                </option><option value="ggg">gigs
+                                                </option><option value="hhh">housing
+                                                </option><option value="jjj">jobs
+                                                </option><option value="ppp">personals
+                                                </option><option value="res">resumes
+                                                </option><option value="sss" selected="selected">for sale
+                                                </option><option value="bbb">services
+                                                </option></select>
+                                            <input id="go" type="submit" value="Search">
+                                        </form>
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
-                        <table summary="main" id="main">
+                        <table summary="main" id="main" style="height:600px;">
                             <tbody><tr>
                                     <td>
 
@@ -208,8 +199,8 @@
 
 
                                         <div id="ppp" class="col">
-                                            <h4 class="ban"><label class="bannerlink" id="ppp-banner">personals</label><br/><img class="imageicon" src="http://aux.iconpedia.net/uploads/13609053901163452946.png"/></h4>
-                                            <div class="cats">
+                                            <h4 class="ban categoryban"><label class="bannerlink" id="ppp-banner">personals</label><br/><img class="imageicon" src="http://aux.iconpedia.net/uploads/13609053901163452946.png"/></h4>
+                                            <div class="cats categoryban">
                                                 <ul id="ppp0">
                                                     <li><a href="/search">strictly platonic</a></li>
                                                     <li><a href="/search">women seek women</a></li>
@@ -493,15 +484,41 @@
 
 
                                     </td>
+                                    <td>
+                                    
+                                        
+
+                                    </td>
+                                    
                                 </tr>
-                            </tbody></table>
+                            </tbody>
+                        </table>
+                        <div id="bottomban" class="ban">
+                            <table style="width:100%">
+                                <tr>
+                                    <td>
+                                        <a href="/home?location=phoenixabout/scams">avoid scams &amp; fraud</a>
+                                        <a href="/home?location=phoenixabout/safety">personal safety tips</a>
+                                        <a href="/home?location=phoenixabout/terms.of.use">terms of use <font color="orange">new</font></a>
+                                        <a href="/home?location=phoenixabout/help/system-status.html">system status</a>   
+                                    </td>
+                                    <td>
+                                        <a href="/home?location=phoenixabout/">about craigslist</a>
+                                        <a href="/home?location=phoenix">craigslist blog</a>
+                                        <a href="/home?location=phoenixabout/best/all/">best-of-craigslist</a>
+                                        <a href="http://www.craigslist-tv.com/">craigslist TV</a>
+                                        <a href="http://craigconnects.org/">craig connects</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
                     </td>
 
                     <td id="rightbar">
                         <ul class="menu collapsible">
                             
                             <li class="expand s"><a class="ban hot active" href="/locations">All Locations</a></li><br/>
-                            <li class="expand s"><h5 class="ban hot active" id="near-class">nearby cl</h5>
+                            <li class="expand s"><h5 class="ban hot active" id="near-class">nearby az</h5>
                                 <ul class="acitem" style="display: block;" id="near">
                                     <li class="s"><a href="/home?location=phoenix">albuquerque</a>
                                     </li><li class="s"><a href="/home?location=phoenix">farmington</a>
@@ -756,7 +773,7 @@
             </tbody></table>
 
 
-
+        
 
     </body>
 </html>
