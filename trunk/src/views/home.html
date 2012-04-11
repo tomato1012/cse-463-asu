@@ -6,7 +6,8 @@
 
         <meta name="description" content="craigslist provides local classifieds and forums for jobs, housing, for sale, personals, services, local community, and events">
         <meta name="google-site-verification" content="Ie0Do80edB2EurJYj-bxqMdX7zkMjx_FnjtQp_XMFio">
-        <link type="text/css" rel="stylesheet" media="all" href="/stylesheets/craigslist.css">
+        <link type="text/css" rel="stylesheet" media="all" href="/stylesheets/craigslist-homepage.css">
+        <link type="text/css" href="/stylesheets/jquery-ui-1.8.18.custom.css" rel="stylesheet" />
         <script type="text/javascript" src="/javascripts/cookies.js"></script>
         <script type="text/javascript" src="/javascripts/jquery-1.4.2.js"></script>
         <script type="text/javascript" src="/javascripts/homepage.js"></script>
@@ -59,6 +60,24 @@
                 {
                     $(".cats").slideUp();
                 }
+                
+                $("#change-location-link").click(function()
+                {
+                    $("#new-location-div").toggle();
+                });
+                
+                $("#save-new-location-button").click(function()
+                {
+                    var newLocation = $("#new-location-input").attr("value");
+                    if(newLocation == "")
+                    {
+                        $("#new-location-error").html("The locaiton you have entered is invalid");
+                        return;
+                    }
+                    setCookie("location",newLocation);
+                    $("#location-label").html(newLocation);
+                    $("#new-location-div").toggle();
+                });
             });
 	
 
@@ -139,18 +158,29 @@
                     </td>
 
                     <td>
-
-                        <div id="topban" class="ban">
-                            <table style="width:100%;">
-                                <tr>
-                                    <td>
-                                        <h2>phoenix</h2>&nbsp;<sup><a href="http://en.wikipedia.org/wiki/Phoenix%2C%20AZ">w</a></sup>
-                                        <span class="sublinks"><a href="/search/cph/" title="central/south phx">cph</a><a href="/search/evl/" title="east valley">evl</a><a href="/search/nph/" title="phx north">nph</a><a href="/search/wvl/" title="west valley">wvl</a></span>
-                                    </td>
-                                    <td>
-                                        <form id="search" action="/search" method="GET">
-                                            <input id="query" placeholder="Search Craigslist" name="query"/><br>
-                                            <select name="catAbb">
+                        	
+                        <script type="text/javascript" src="/javascripts/jquery-1.7.1.min.js" ></script>
+                        <script type="text/javascript" src="/javascripts/jquery-ui-1.8.18.custom.min.js" ></script>
+                        <script type="text/javascript" src="/javascripts/locations-array.js" ></script>
+                        <script type="text/javascript">
+                            $(function() {
+                                
+                                $( "#new-location-input" ).autocomplete({
+                                    source: locationsArray
+                                });
+                            });
+                        </script>
+                        <div id="topban" class="ban" style="width:100%;">
+                            <form id="search" action="/search" method="GET">
+                                <table style="width:100%;">
+                                    <tr>
+                                        <td style="width:100%;" colspan="3">
+                                            <input id="query" placeholder="Search Craigslist" name="query" style="width:97%;"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <select name="catAbb" style="width:100%;">
                                                 <option value="ccc">community
                                                 </option><option value="eee">events
                                                 </option><option value="ggg">gigs
@@ -160,12 +190,35 @@
                                                 </option><option value="res">resumes
                                                 </option><option value="sss" selected="selected">for sale
                                                 </option><option value="bbb">services
-                                                </option></select>
-                                            <input id="go" type="submit" value="Search">
-                                        </form>
-                                    </td>
-                                </tr>
-                            </table>
+                                                </option>
+                                            </select>
+                                        </td>
+                                        <td style="width:20%;">
+                                            <table>
+                                                <tr><td>Near <label id="location-label"><%=location%></label></td></tr>
+                                                <tr>
+                                                    <td>
+                                                        <a id="change-location-link" href="javascript:void(0);" style="font-size:smaller">change location</a><br/>
+                                                        <div id="new-location-div" style="position: absolute; display: none; border: thin black solid; padding:10px; background-color:#EEE;">
+                                                            <input id="new-location-input" placeholder="Enter New Location" type="text" style="font-size: medium;padding: 2px;"/>
+                                                            <input id="save-new-location-button" 
+                                                                    style="color: blue;border: 1px solid blue;font-weight: bold;width:87px;font-size: medium;padding: 2px;"
+                                                                    onclick="javascript:void(0)" value="Save">
+                                                            <br/>
+                                                            <label id="new-location-error" style="color:red"></label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td>
+                                            <input id="go" type="submit" value="Search" style="width:97%;"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                                
+                            </form>
+                                            
                         </div>
                         <table summary="main" id="main" style="height:600px;">
                             <tbody><tr>
@@ -493,22 +546,25 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <div id="bottomban" class="ban">
+                        <div id="bottomban" class="ban" style="font-size:x-small">
                             <table style="width:100%">
                                 <tr>
+                                    <td>
+                                        <a href="/home?location=phoenixabout/">about craigslist</a>
+                                        <a href="/home?location=phoenix">craigslist blog</a>
+                                        <a href="/home?location=phoenixabout/help/system-status.html">system status</a> 
+                                    </td>
                                     <td>
                                         <a href="/home?location=phoenixabout/scams">avoid scams &amp; fraud</a>
                                         <a href="/home?location=phoenixabout/safety">personal safety tips</a>
                                         <a href="/home?location=phoenixabout/terms.of.use">terms of use <font color="orange">new</font></a>
-                                        <a href="/home?location=phoenixabout/help/system-status.html">system status</a>   
                                     </td>
                                     <td>
-                                        <a href="/home?location=phoenixabout/">about craigslist</a>
-                                        <a href="/home?location=phoenix">craigslist blog</a>
                                         <a href="/home?location=phoenixabout/best/all/">best-of-craigslist</a>
                                         <a href="http://www.craigslist-tv.com/">craigslist TV</a>
                                         <a href="http://craigconnects.org/">craig connects</a>
                                     </td>
+
                                 </tr>
                             </table>
                         </div>
@@ -517,7 +573,7 @@
                     <td id="rightbar">
                         <ul class="menu collapsible">
                             
-                            <li class="expand s"><a class="ban hot active" href="/locations">All Locations</a></li><br/>
+                            <li class="expand s"><a class="ban hot active" href="/location">All Locations</a></li><br/>
                             <li class="expand s"><h5 class="ban hot active" id="near-class">nearby az</h5>
                                 <ul class="acitem" style="display: block;" id="near">
                                     <li class="s"><a href="/home?location=phoenix">albuquerque</a>
