@@ -8,10 +8,15 @@ exports.home = function(req, res){
 
 	var getLocation = url.parse(req.url, true).query["location"];
 	//if you recieved a location varaible in the string then we need to set the locaiton cookie to this value and go to the home page
+	console.log("get Location="+getLocation);
 	if(getLocation != null)	
 	{
+		if(getLocation == "test")
+			res.render('location.html', { title: 'Craigslist Locations' , possiblesDisplay : "inline"})
+		
 		res.setHeader('Set-Cookie', ['location='+getLocation]);
-		res.render("home.html", { title: 'Craigslist Home', "location": getLocation})
+		res.render("home.html", { title: 'Craigslist Home', location: getLocation})
+		return;
 	}
 	//else search to see if the locaiton cookie is included
 
@@ -28,7 +33,7 @@ exports.home = function(req, res){
 	{
 		if(cookie == "location")
 		{
-			locationCookie = cookie;
+			locationCookie = cookies[cookie];
 			hasLocation = true;
 		}
 	}		
@@ -38,7 +43,7 @@ exports.home = function(req, res){
 	if(hasLocation)
 		res.render("home.html", { title: 'Craigslist Home', location: locationCookie})
 	else
-		res.render('location.html', { title: 'Craigslist Locations' })
+		res.render('location.html', { title: 'Craigslist Locations', possiblesDisplay : "none" })
 };
 
 // GET Search Page
@@ -78,7 +83,7 @@ exports.sendmessage = function(req, res){
 
 // GET Location Page
 exports.location = function(req, res){
-  res.render('location.html', { title: 'Craigslist Locations' })
+  res.render('location.html', { title: 'Craigslist Locations', possiblesDisplay : "none" })
 };
 
 exports.deadpage = function(req, res){
