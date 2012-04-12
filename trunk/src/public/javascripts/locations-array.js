@@ -32,3 +32,4 @@ var locationsArray =  [
 			"Waterbury", "West Covina", "West Jordan", "West Valley City", "Westminster", "Wichita", "Wichita Falls", "Wilmington", "Winston-Salem", "Wisconsin", "Worcester",
 			"Yonkers"
 		];
+module.exports.locationsArray = locationsArray;		

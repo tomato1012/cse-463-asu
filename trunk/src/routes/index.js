@@ -1,7 +1,7 @@
 
 var url = require("url");
 var mailer = require("mailer");
-
+var locationsArray = require("../public/javascripts/locations-array.js").locationsArray;
 
 // GET Home Page
 exports.home = function(req, res){
@@ -11,12 +11,21 @@ exports.home = function(req, res){
 	console.log("get Location="+getLocation);
 	if(getLocation != null)	
 	{
-		if(getLocation == "test")
-			res.render('location.html', { title: 'Craigslist Locations' , possiblesDisplay : "inline"})
+		var locationFound = false;
+		for(l in locationsArray)
+			if(locationsArray[l] == getLocation)
+			{
+				locationFound = true;
+				break;
+			}
 		
-		res.setHeader('Set-Cookie', ['location='+getLocation]);
-		res.render("home.html", { title: 'Craigslist Home', location: getLocation})
-		return;
+		if(!locationFound)
+			res.render('location.html', { title: 'Craigslist Locations' , possiblesDisplay : "inline"})
+		else
+		{
+			res.setHeader('Set-Cookie', ['location='+getLocation]);
+			res.render("home.html", { title: 'Craigslist Home', location: getLocation})
+		}	
 	}
 	//else search to see if the locaiton cookie is included
 
