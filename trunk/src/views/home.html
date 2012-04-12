@@ -74,9 +74,15 @@
                         $("#new-location-error").html("The locaiton you have entered is invalid");
                         return;
                     }
-                    setCookie("location",newLocation);
-                    $("#location-label").html(newLocation);
-                    $("#new-location-div").toggle();
+                    window.location = "./home?location="+newLocation;
+                    // setCookie("location",newLocation);
+                    // $("#location-label").html(newLocation);
+                    // $("#new-location-div").toggle();
+                });
+                $("#new-location-input").keyup(function(event)
+                {
+                	if(event.keyCode == 13)
+                		$("#save-new-location-button").click();
                 });
             });
 	
@@ -200,10 +206,12 @@
                                                     <td>
                                                         <a id="change-location-link" href="javascript:void(0);" style="font-size:smaller">change location</a><br/>
                                                         <div id="new-location-div" style="position: absolute; display: none; border: thin black solid; padding:10px; background-color:#EEE;">
-                                                            <input id="new-location-input" placeholder="Enter New Location" type="text" style="font-size: medium;padding: 2px;"/>
-                                                            <input id="save-new-location-button" 
+                                                            <input id="new-location-input" placeholder="Enter New Location" name="location" type="text" style="font-size: medium;padding: 2px;"/>
+                                                            <input id="save-new-location-button" type="button"
                                                                     style="color: blue;border: 1px solid blue;font-weight: bold;width:87px;font-size: medium;padding: 2px;"
-                                                                    onclick="javascript:void(0)" value="Save">
+                                                                    onclick="javascipt:void(0)" value="Save">
+
+                                                            
                                                             <br/>
                                                             <label id="new-location-error" style="color:red"></label>
                                                         </div>
