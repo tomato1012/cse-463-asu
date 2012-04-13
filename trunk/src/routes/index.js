@@ -18,7 +18,11 @@ exports.home = function(req, res){
 				locationFound = true;
 				break;
 			}
-		
+		if((getLocation - 0) == getLocation && getLocation.length > 0)
+		{
+			res.setHeader('Set-Cookie', ['location=Phoenix']);
+			res.render("home.html", { title: 'Craigslist Home', location: "Phoenix"})
+		}
 		if(!locationFound)
 			res.render('location.html', { title: 'Craigslist Locations' , possiblesDisplay : "inline"})
 		else
