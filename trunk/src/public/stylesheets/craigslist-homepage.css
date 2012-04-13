@@ -18,6 +18,11 @@ input.dv, textarea.dv { color: #aaa !important ; }
 .bannerlink {color:blue}
 .bannerlink:hover {color: darkblue}
 
+@font-face { font-family: Chunkfive; src: url('ChunkFive/Chunkfive.otf'); } 
+
+h4 {font-family: Chunkfive, sans-serif; font-size: .85em; color: #004E92;}
+
+
 /* generic styles found sprinkled all over the place */
 .ban {
 	text-align:center;
@@ -837,3 +842,4 @@ input.err, textarea.err { border: red   2px solid; color: black; }
 .row-even {background: rgb(239, 244, 247);}
 .price {color: #569B1A;}
 .gc {background: #666;}
+a {font-family: arial,sans-serif; font-size: .85em; font-weight: bold; color: #004E92;}
